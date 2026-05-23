@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>二次元动漫社区 | 漫迷聚集地</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0e1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2a2f45;
+            z-index: 1000;
+            padding: 0 16px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff6b9d;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #a0a8c0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b9d;
+        }
+
+        /* 布局 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        /* 欢迎卡片 */
+        .welcome-card {
+            background: linear-gradient(135deg, #1a2035 0%, #13182a 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #2a2f45;
+        }
+
+        .welcome-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .welcome-card h1 span {
+            color: #ff6b9d;
+        }
+
+        .welcome-card p {
+            color: #a0a8c0;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* 分区网格 */
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff6b9d;
+            display: inline-block;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .category-card {
+            background: #13182a;
+            border: 1px solid #2a2f45;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: #ff6b9d;
+            transform: translateY(-2px);
+        }
+
+        .category-icon {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .category-name {
+            font-size: 0.85rem;
+            color: #a0a8c0;
+        }
+
+        /* Giscus 评论区容器 */
+        .discussions-section {
+            margin-top: 30px;
+            background: #13182a;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid #2a2f45;
+        }
+
+        .discussions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-github {
+            background: #24292e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .giscus-container {
+            margin-top: 16px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .welcome-card h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                🎌 二次元社区
+            </a>
+            <div class="nav-links">
+                <a href="#">首页</a>
+                <a href="#" onclick="document.querySelector('.giscus-container iframe')?.scrollIntoView({behavior:'smooth'}); return false;">讨论区</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h1>欢迎来到 <span>二次元动漫社区</span> 🎉</h1>
+            <p>漫迷们的专属聚集地 · 讨论新番 · 分享创作 · 结交同好</p>
+            <a href="https://github.com/MZY-leijia/anime-community/discussions/new/choose" target="_blank" class="btn-primary">✨ 立即发帖</a>
+        </div>
+
+        <h2 class="section-title">📁 九大专业分区</h2>
+        <div class="category-grid">
+            <div class="category-card"><div class="category-icon">🔥</div><div class="category-name">新番前线</div></div>
+            <div class="category-card"><div class="category-icon">📀</div><div class="category-name">经典番馆</div></div>
+            <div class="category-card"><div class="category-icon">💑</div><div class="category-name">人设CP馆</div></div>
+            <div class="category-card"><div class="category-icon">🎨</div><div class="category-name">原创创作阁</div></div>
+            <div class="category-card"><div class="category-icon">📦</div><div class="category-name">素材资源站</div></div>
+            <div class="category-card"><div class="category-icon">🎪</div><div class="category-name">漫展潮流社</div></div>
+            <div class="category-card"><div class="category-icon">🙏</div><div class="category-name">番剧求助台</div></div>
+            <div class="category-card"><div class="category-icon">💬</div><div class="category-name">二次元闲聊区</div></div>
+            <div class="category-card"><div class="category-icon">👥</div><div class="category-name">同好圈子馆</div></div>
+        </div>
+
+        <div class="discussions-section">
+            <div class="discussions-header">
+                <h3 style="color:#ff6b9d;">💬 社区讨论</h3>
+                <a href="https://github.com/MZY-leijia/anime-community/discussions" target="_blank" class="btn-github">
+                    <span>🐙</span> 在 GitHub 上查看所有帖子
+                </a>
+            </div>
+            <div class="giscus-container"></div>
+        </div>
+    </div>
+
+    <!-- Giscus 评论系统 -->
+    <script src="https://giscus.app/client.js"
+        data-repo="MZY-leijia/anime-community"
+        data-repo-id="R_kgDOSlbfZg"
+        data-category="Announcements"
+        data-category-id=""
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_dimmed"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+    <script>
+        // 等待 Giscus 加载完成后，把评论容器放到正确位置
+        setTimeout(() => {
+            const giscusFrame = document.querySelector('iframe[src*="giscus"]');
+            const container = document.querySelector('.giscus-container');
+            if (giscusFrame && container && !container.contains(giscusFrame)) {
+                container.appendChild(giscusFrame);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
